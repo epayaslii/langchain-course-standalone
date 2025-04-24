@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "langgaph-course"
+version = "0.1.0"
+description = ""
+authors = ["Eden Marco <emarco177@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+tiktoken = "*"
+langchain = "*"
+langchain-text-splitters = "*"
+langchain-unstructured = "*"
+unstructured = "*"
+langgraph = "*"
+langchain-openai = "*"
+python-dotenv = "*"
+black = "*"
+isort = "*"
+pytest = "*"
+langchain-chroma = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
