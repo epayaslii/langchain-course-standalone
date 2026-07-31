@@ -27,3 +27,7 @@ uv run python main.py
 ```
 
 Each branch has its own `pyproject.toml`/`.env` requirements — check that branch's own README for specifics (API keys needed, etc.).
+
+## Credentials
+
+Thank you to the [Udemy LangChain & LangGraph course](https://www.udemy.com/course/langchain/) by Eden Marco, from which `hello-world`, `search-agent`, and `agents-under-the-hood` originated, and to [emarco177/documentation-helper](https://github.com/emarco177/documentation-helper), from which `documentation-helper` originated.
