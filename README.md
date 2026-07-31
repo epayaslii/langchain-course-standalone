@@ -33,7 +33,8 @@ A RAG chatbot that answers questions about LangChain's documentation, with sourc
 
 ### Prerequisites
 - Python 3.11+
-- `OPENAI_API_KEY`, `TAVILY_API_KEY` in a `.env` file
+- `OPENAI_API_KEY` in a `.env` file (required to run `main.py`)
+- `TAVILY_API_KEY` too if you want to (re-)run `ingestion.py`
 
 ### Setup
 
@@ -42,13 +43,10 @@ git clone https://github.com/epayaslii/langchain-course
 cd langchain-course
 git checkout project/documentation-helper
 
-pipenv install
-# Pipfile doesn't declare `langchain`, `langchain-openai`, or `langchain-classic`
-# even though core.py/ingestion.py import them — install those too:
-pipenv install langchain langchain-openai langchain-classic
+pip install -r requirements.txt
 
-pipenv run python ingestion.py   # crawls and indexes the docs into chroma_db/
-pipenv run streamlit run main.py
+python ingestion.py   # crawls and indexes the docs into chroma_db/ (also needs TAVILY_API_KEY)
+streamlit run main.py
 ```
 
 Then open `http://localhost:8501`.
@@ -68,15 +66,15 @@ documentation-helper/
 ├── logger.py
 ├── Tavily Demo Tutorial.ipynb
 ├── Tavily Crawl Demo Tutorial.ipynb
-└── Pipfile / Pipfile.lock
+└── requirements.txt
 ```
 
 ## Environment variables
 
 | Variable | Required |
 |----------|----------|
-| `OPENAI_API_KEY` | ✅ |
-| `TAVILY_API_KEY` | ✅ |
+| `OPENAI_API_KEY` | ✅ (runtime) |
+| `TAVILY_API_KEY` | Only for `ingestion.py` |
 
 ## License
 
