@@ -15,6 +15,10 @@ A RAG chatbot that answers questions about LangChain's documentation, with sourc
 
 **Retrieval + chat** (`backend/core.py`, `main.py`): `backend/core.py` builds a LangChain agent (`create_agent`) with a `retrieve_context` tool that searches the Chroma store for relevant doc chunks. `main.py` is a Streamlit chat UI — ask a question, it calls the agent, and shows the answer plus an expandable list of source URLs it pulled context from.
 
+## Demo
+
+![Documentation Helper screenshot](static/screenshot.jpg)
+
 ## Tech stack
 
 | Component | Technology |
