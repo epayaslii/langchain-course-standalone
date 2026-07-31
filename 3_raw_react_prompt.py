@@ -5,11 +5,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-import ollama
-from langsmith import traceable
+from openai import OpenAI
+from langsmith import Client, traceable
+from langsmith.utils import LangSmithConflictError
+from langchain_core.prompts import PromptTemplate
 
 MAX_ITERATIONS = 10
-MODEL = "qwen3:1.7b"
+MODEL = "gpt-4o-mini"
+
+client = OpenAI()
+langsmith_client = Client()
 
 
 # --- Tools (LangChain @tool decorator) ---
@@ -81,15 +86,28 @@ Begin!
 Question: {{question}}
 Thought:"""
 
+# Push this prompt to the LangSmith Prompt Hub so it's versioned and reusable
+# across runs. push_prompt raises a 409 if the text is identical to the last
+# commit, so that specific case is swallowed as a no-op.
+try:
+    langsmith_client.push_prompt(
+        "shopping-react-agent",
+        object=PromptTemplate.from_template(react_prompt),
+    )
+except LangSmithConflictError:
+    pass
 
 
 
-# CHANGE 4: Drop tools= from ollama.chat(). The LLM has no idea it's an agent —
+
+# CHANGE 4: Drop tools= from the API call. The LLM has no idea it's an agent —
 # all agency comes from the prompt above and our regex parsing below.
 
-@traceable(name="Ollama Chat", run_type="llm")
-def ollama_chat_traced(model, messages, options):
-    return ollama.chat(model=model, messages=messages, options=options)
+@traceable(name="OpenAI Chat", run_type="llm")
+def openai_chat_traced(model, messages, stop, temperature):
+    return client.chat.completions.create(
+        model=model, messages=messages, stop=stop, temperature=temperature
+    )
 
 
 
@@ -98,7 +116,7 @@ def ollama_chat_traced(model, messages, options):
 # --- Agent Loop ---
 
 
-@traceable(name="Ollama Agent Loop")
+@traceable(name="OpenAI Agent Loop")
 def run_agent(question: str):
     print(f"Question: {question}")
     print("=" * 60)
@@ -114,12 +132,13 @@ def run_agent(question: str):
 
         # Stop token prevents the LLM from generating its own Observation —
         # we inject the real tool result instead.
-        response = ollama_chat_traced(
+        response = openai_chat_traced(
             model=MODEL,
             messages=[{"role": "user", "content": full_prompt}],
-            options={"stop": ["\nObservation"], "temperature": 0},
+            stop=["\nObservation"],
+            temperature=0,
         )
-        output = response.message.content
+        output = response.choices[0].message.content
         print(f"LLM Output:\n{output}")
 
         print(f"  [Parsing] Looking for Final Answer in LLM output...")

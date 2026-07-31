@@ -6,7 +6,7 @@ import ollama
 from langsmith import traceable
 
 MAX_ITERATIONS = 10
-MODEL = "qwen3:1.7b"
+MODEL = "qwen2.5:latest"
 
 
 # --- Tools (LangChain @tool decorator) ---

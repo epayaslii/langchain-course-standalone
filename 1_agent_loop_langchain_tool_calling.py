@@ -2,13 +2,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import httpx
 from langchain.chat_models import init_chat_model
 from langchain.tools import tool
 from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
 from langsmith import traceable
 
 MAX_ITERATIONS = 10
-MODEL = "qwen3:1.7b"
+MODEL = "qwen2.5:latest"
 
 
 # --- Tools (LangChain @tool decorator) ---
@@ -107,4 +108,10 @@ def run_agent(question: str):
 if __name__ == "__main__":
     print("Hello LangChain Agent (.bind_tools)!")
     print()
-    result = run_agent("What is the price of a laptop after applying a gold discount?")
+    try:
+        result = run_agent("What is the price of a laptop after applying a gold discount?")
+    except httpx.ConnectError:
+        print(
+            "ERROR: Could not connect to Ollama. Is it running?\n"
+            "Start it with: ollama serve"
+        )
