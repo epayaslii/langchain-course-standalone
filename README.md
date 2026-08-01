@@ -16,3 +16,7 @@ uv run python main.py
 ```
 
 Needs `OPENAI_API_KEY` and `TAVILY_API_KEY` in a `.env` file.
+
+## Acknowledgements
+
+This project was built while following Eden Marco's [LangGraph - Develop LLM powered AI agents with LangGraph](https://www.udemy.com/course/langgraph/) Udemy course, based on his original [langgraph-course](https://github.com/emarco177/langgraph-course) repository.
