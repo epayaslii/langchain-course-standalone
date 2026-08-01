@@ -36,7 +36,7 @@ This approach creates a self-improving system that produces higher quality outpu
 ```bash
 # Clone the repository
 git clone https://github.com/emarco177/langgraph-course.git
-cd langgraph-course
+cd reflection-agent
 git checkout project/reflection-agent
 
 # Install dependencies using Poetry
