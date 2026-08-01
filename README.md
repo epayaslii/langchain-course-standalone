@@ -101,3 +101,7 @@ uv run python 3_raw_react_prompt.py
 - Files 1 and 2: **Ollama** running locally with `qwen2.5:latest` pulled (`ollama pull qwen2.5:latest`)
 - File 3: `OPENAI_API_KEY` in `.env`
 - All three: `LANGSMITH_API_KEY` in `.env` (optional, for tracing)
+
+## Acknowledgements
+
+This project was built while following Eden Marco's [LangGraph - Develop LLM powered AI agents with LangGraph](https://www.udemy.com/course/langgraph/) Udemy course, based on his original [langgraph-course](https://github.com/emarco177/langgraph-course) repository.
