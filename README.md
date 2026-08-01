@@ -11,18 +11,18 @@ A collection of standalone LangChain / LangGraph agent projects. Each project li
 
 | Branch | What it does |
 |---|---|
-| [`project/hello-world`](https://github.com/epayaslii/langchain-course/tree/project/hello-world) | Minimal LangChain example: builds a prompt template and sends it to an LLM (Gemini/Ollama/OpenAI, swappable) to summarize a block of text into a short summary plus two facts. |
-| [`project/search-agent`](https://github.com/epayaslii/langchain-course/tree/project/search-agent) | A LangChain v1 `create_agent` agent equipped with Tavily web search as a tool, returning a structured response (answer + list of source URLs) via a Pydantic schema. |
-| [`project/agents-under-the-hood`](https://github.com/epayaslii/langchain-course/tree/project/agents-under-the-hood) | The same tool-calling agent loop implemented three ways at decreasing levels of abstraction, to show what an "agent" is actually doing under the hood: (1) LangChain's `@tool` decorator + `init_chat_model`, (2) the same loop hand-written against Ollama's raw function-calling API with no LangChain, (3) the same loop again with no function-calling API at all — tool calls are parsed out of raw ReAct-style text completions. |
-| [`project/documentation-helper`](https://github.com/epayaslii/langchain-course/tree/project/documentation-helper) | A RAG chatbot that answers questions about LangChain's docs. `ingestion.py` crawls `python.langchain.com` with Tavily, chunks and embeds the pages, and stores them in a local Chroma vector store. `backend/core.py` wires a LangChain agent to a retrieval tool over that store, and `main.py` is a Streamlit chat UI on top of it. |
+| [`project/hello-world`](https://github.com/epayaslii/langchain-project/tree/project/hello-world) | Minimal LangChain example: builds a prompt template and sends it to an LLM (Gemini/Ollama/OpenAI, swappable) to summarize a block of text into a short summary plus two facts. |
+| [`project/search-agent`](https://github.com/epayaslii/langchain-project/tree/project/search-agent) | A LangChain v1 `create_agent` agent equipped with Tavily web search as a tool, returning a structured response (answer + list of source URLs) via a Pydantic schema. |
+| [`project/agents-under-the-hood`](https://github.com/epayaslii/langchain-project/tree/project/agents-under-the-hood) | The same tool-calling agent loop implemented three ways at decreasing levels of abstraction, to show what an "agent" is actually doing under the hood: (1) LangChain's `@tool` decorator + `init_chat_model`, (2) the same loop hand-written against Ollama's raw function-calling API with no LangChain, (3) the same loop again with no function-calling API at all — tool calls are parsed out of raw ReAct-style text completions. |
+| [`project/documentation-helper`](https://github.com/epayaslii/langchain-project/tree/project/documentation-helper) | A RAG chatbot that answers questions about LangChain's docs. `ingestion.py` crawls `python.langchain.com` with Tavily, chunks and embeds the pages, and stores them in a local Chroma vector store. `backend/core.py` wires a LangChain agent to a retrieval tool over that store, and `main.py` is a Streamlit chat UI on top of it. |
 | [`project/agentic-rag`](https://github.com/epayaslii/langchain-project/tree/project/agentic-rag) | An Agentic/Self-RAG pipeline built with LangGraph over a Chroma vector store: a router picks between local retrieval and Tavily web search, a grade-documents node filters out irrelevant retrieved docs, and a generate node produces the answer with a self-RAG check for hallucinations before returning. |
 | [`project/reflection-agent`](https://github.com/epayaslii/langchain-project/tree/project/reflection-agent) | A LangGraph reflection agent that improves a tweet through a generate/reflect feedback loop: a generate node drafts (or revises) the tweet, a reflect node critiques it, and the two loop back and forth for a fixed number of iterations before returning the final version. |
 
 ## Getting started
 
 ```bash
-git clone https://github.com/epayaslii/langchain-course
-cd langchain-course
+git clone https://github.com/epayaslii/langchain-project
+cd langchain-project
 git checkout project/<name>   # e.g. project/hello-world
 uv sync
 uv run python main.py
@@ -30,6 +30,6 @@ uv run python main.py
 
 Each branch has its own `pyproject.toml`/`.env` requirements — check that branch's own README for specifics (API keys needed, etc.).
 
-## Credentials
+## Acknowledgements
 
-Thank you to the [Udemy LangChain & LangGraph course](https://www.udemy.com/course/langchain/) by Eden Marco, from which `hello-world`, `search-agent`, and `agents-under-the-hood` originated, and to [emarco177/documentation-helper](https://github.com/emarco177/documentation-helper), from which `documentation-helper` originated.
+Every branch in this repo was built while following Eden Marco's [LangChain](https://commencis.udemy.com/course/langchain/learn/lecture/49043719?learning_path_id=7785136#content) Udemy course, based on his original [langchain-course](https://github.com/emarco177/langchain-course) repository.
