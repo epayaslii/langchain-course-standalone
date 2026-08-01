@@ -14,3 +14,7 @@ uv run python main.py
 ```
 
 Needs whichever credential matches the LLM you have active — `GOOGLE_API_KEY` for Gemini, `OPENAI_API_KEY` for OpenAI — in a `.env` file, or a local Ollama instance running for `ChatOllama`.
+
+## Acknowledgements
+
+This project was built while following Eden Marco's [LangGraph - Develop LLM powered AI agents with LangGraph](https://www.udemy.com/course/langgraph/) Udemy course, based on his original [langgraph-course](https://github.com/emarco177/langgraph-course) repository.
