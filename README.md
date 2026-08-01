@@ -39,8 +39,8 @@ A RAG chatbot that answers questions about LangChain's documentation, with sourc
 ### Setup
 
 ```bash
-git clone https://github.com/epayaslii/langchain-course
-cd langchain-course
+git clone https://github.com/epayaslii/langchain-project
+cd langchain-project
 git checkout project/documentation-helper
 
 pip install -r requirements.txt
@@ -79,3 +79,7 @@ documentation-helper/
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Acknowledgements
+
+This project was built while following Eden Marco's [LangGraph - Develop LLM powered AI agents with LangGraph](https://www.udemy.com/course/langgraph/) Udemy course, based on his original [langgraph-course](https://github.com/emarco177/langgraph-course) repository.
