@@ -87,4 +87,4 @@ print(improved_tweet)
 
 This reflection agent implementation is based on the concepts and patterns described in the LangGraph documentation. For more information about reflection agents, visit the [LangGraph Reflection Tutorial](https://langchain-ai.github.io/langgraph/tutorials/reflection/reflection/).
 
-This project was built while following Eden Marco's [LangGraph - Develop LLM powered AI agents with LangGraph](https://www.udemy.com/course/langgraph/) Udemy course, based on his original [langgraph-course](https://github.com/emarco177/langgraph-course) repository.
+This project was built while following Eden Marco's [LangChain](https://commencis.udemy.com/course/langchain/learn/lecture/49043719?learning_path_id=7785136#content) Udemy course, based on his original [langchain-course](https://github.com/emarco177/langchain-course) repository.
